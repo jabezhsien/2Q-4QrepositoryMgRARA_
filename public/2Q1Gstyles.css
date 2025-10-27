@@ -80,6 +80,25 @@ ul {
   color: #bcf8bb;
 }
 
+img.img {
+  float: right;
+  margin-top: 10px;
+  margin-left: 15px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow:#11a761 0 0 15px;
+}
+
+a.vid {
+  color: rgb(24, 116, 32);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.vid:visited {
+  color:rgb(19, 232, 104);
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
