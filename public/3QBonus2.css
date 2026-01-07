@@ -1,0 +1,22 @@
+body{
+  padding: 25px;
+  font-family: arial;
+}
+
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+table, tr, td, th {
+  border: 1px solid black;
+}
+td,th {
+  padding: 5px;
+}
+tr:nth-child(odd) {
+  background-color: lightgray;
+}
+
+p {
+  color: blue;
+}

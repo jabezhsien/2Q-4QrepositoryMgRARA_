@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="3QBonus2.css" />
+  </head>
+  <body>
+      <h1>Simple reading from an Object</h1>
+      <h2>Selecting Show based on Category</h2> 
+      <label>
+        Select A Category:
+        <select id="showCat" name="showCat">
+          <option value="All">All</option>
+          <option value="Drama">Drama</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Anime">Anime</option>
+        </select>
+      </label>
+      <button onclick="getShows()">Get Shows</button>
+      <button onclick="delShows()">Delete Shows</button>
+      <table id="results">
+
+      </table>
+      <p id="count"> </p>
+      <script src="3QBonus2.js"></script>
+  </body>
+</html>
