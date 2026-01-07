@@ -1,10 +1,8 @@
-var netflixShows;
-
 function getShows() {
   const showList = getShowList(); // get the object from the function
   const cat = showCat.value;  // get the value from the drop down
    //console.log(cat)
-  let rowString = "<tr><th>Key</th><th>Title</th><th>Casts</th><th>Year</th><th>Rating / Score</th></tr>";
+  rowString = "<tr><th>Key</th><th>Title</th><th>Casts</th><th>Year</th><th>Rating / Score</th></tr>";
   results.innerHTML = ""  // resets the table
    for (let key in showList) {
      if (showList[key].category == cat  || cat == "All") {
