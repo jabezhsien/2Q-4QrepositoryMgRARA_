@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Jabez Hsien G. Rara">
+        <meta name="description" content="2Q Portfolio" /> 
+        <meta name="keywords" content="2Q, Portfolio, Projects, Web Development" /> 
+        <title>Q3_2G</title>
+        <script>
+            function onReset() {
+                return confirm("Are you sure you want to reset your data?");
+            }
+
+            function onSubmit() {
+                return confirm("Are you sure you want to submit your answers?");
+            }
+
+            function onBlur(){
+                var x = document.getElementById("response").value;
+
+                if (x == "") {
+                    alert("Please input an answer.");
+                        } else {
+                    alert("Answer accepted.");
+                    }
+            }
+        </script>
+        <style>
+    body{
+        padding: 25px;
+        font-family: arial;
+        width: 80%;
+        margin-left: 10%;
+        }
+
+        fieldset:nth-child(2) {
+             margin-top: 20px;
+        }
+
+        legend {
+            background: rgb(11, 61, 60);
+            color: rgb(160, 124, 193);
+            padding: 5px;
+        }
+        label {
+             margin: 5%;
+        }
+    </style>
+    </head>
+    <body>
+        <form onsubmit="onSubmit()" onreset="onReset()" method="post" action="">
+            <legend>Club Registration Form</legend><br>
+            <fieldset form="personalDetails">
+                <label for="studentId">Student Id: </label>
+                    <input type="number" min="0" max="30" id="studentId" name="studentId" required><br><br>
+                <label for="fullName">Full Name: </label>
+                    <input type="text" id="response" name="fullName"><br><br>
+                <label for="birthDay">Birthday: </label>
+                    <input type="date" id="birthDay" name="birthDay" required><br><br>
+                <label for="email">Email: </label>
+                    <input type="email" id="email" name="email" autocomplete="email" required><br><br>
+            </fieldset>
+            <br>
+            <fieldset form="userInfo">
+                <label for="mobilePhone">Mobile Phone: </label>
+                    <input type="tel" id="mobilePhone" name="mobilePhone" required><br><br>
+                <label for="gradeLevel">Grade Level: </label>
+                    <select name="gradeLevels" id="gradeLevels" required>
+                        <option value="" disabled selected hidden>Select your grade level!</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                    </select><br><br>
+                <label for="studentStatus">Student Status: </label>    
+                    <input type="radio" name="status" value="Intern" required /> Intern
+                    <input type="radio" name="status" value="Extern" required /> Extern <br><br>
+                <label for="preferredClub">Preferred Club: </label>
+                    <select name="preferredClub" id="preferredClub" required>
+                        <option value="" disabled selected hidden>Select your club!</option>
+                        <option value="Choir Club" >Himig Agham</option>
+                        <option value="Badminton Club">Volant</option>
+                        <option value="Orchestra Club">Bravura</option>
+                        <option value="Basketball">Pallastro</option>
+                        <option value="Debate Club">Invictus</option>
+                    </select><br><br>
+                <label for="reasonForJoining">Why do you want to join this club?
+                    <textarea name="reasonForJoining" id="response">
+                    </textarea></label>
+            </fieldset><br>
+            <fieldset id="actionButtons">
+                <input type="submit" value="Submit Form">
+                <input type="reset" value="Clear Data">
+            </fieldset>    
+        </form>
+    </body>
+</html>
