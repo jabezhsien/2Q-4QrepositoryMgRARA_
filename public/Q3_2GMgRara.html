@@ -7,25 +7,7 @@
         <meta name="description" content="2Q Portfolio" /> 
         <meta name="keywords" content="2Q, Portfolio, Projects, Web Development" /> 
         <title>Q3_2G</title>
-        <script>
-            function onReset() {
-                return confirm("Are you sure you want to reset your data?");
-            }
-
-            function onSubmit() {
-                return confirm("Are you sure you want to submit your answers?");
-            }
-
-            function onBlur(){
-                var x = document.getElementById("response").value;
-
-                if (x == "") {
-                    alert("Please input an answer.");
-                        } else {
-                    alert("Answer accepted.");
-                    }
-            }
-        </script>
+        <script src="Q3_2GMgRara.js"></script>
         <style>
     body{
         padding: 25px;
@@ -46,25 +28,29 @@
         label {
              margin: 5%;
         }
+        input:focus, textarea:focus, select:focus {
+            outline: 2px solid rgb(11, 61, 60);
+        }
+
     </style>
     </head>
     <body>
-        <form onsubmit="onSubmit()" onreset="onReset()" method="post" action="">
+        <form id="clubForm" method="post" action="submit" onsubmit="return submitConfirm()" onreset="return resetConfirm()">
             <legend>Club Registration Form</legend><br>
             <fieldset form="personalDetails">
                 <label for="studentId">Student Id: </label>
-                    <input type="number" min="0" max="30" id="studentId" name="studentId" required><br><br>
+                    <input type="number" min="0" max="30" id="studentId" name="studentId" required onfocus="changeColor(this)" onblur="blurMark(this)"><br><br>
                 <label for="fullName">Full Name: </label>
-                    <input type="text" id="response" name="fullName"><br><br>
+                    <input type="text" id="response" name="fullName" onfocus="changeColor(this)" onblur="blurMark(this)" required><br><br>
                 <label for="birthDay">Birthday: </label>
-                    <input type="date" id="birthDay" name="birthDay" required><br><br>
+                    <input type="date" id="birthDay" name="birthDay" required onfocus="changeColor(this)" onblur="blurMark(this)"><br><br>
                 <label for="email">Email: </label>
-                    <input type="email" id="email" name="email" autocomplete="email" required><br><br>
+                    <input type="email" id="email" name="email"  autocomplete="email" required onfocus="changeColor(this)" onblur="blurMark(this)"><br><br>
             </fieldset>
             <br>
             <fieldset form="userInfo">
                 <label for="mobilePhone">Mobile Phone: </label>
-                    <input type="tel" id="mobilePhone" name="mobilePhone" required><br><br>
+                    <input type="tel" id="mobilePhone" name="mobilePhone" required onfocus="changeColor(this)" onblur="blurMark(this)"><br><br>
                 <label for="gradeLevel">Grade Level: </label>
                     <select name="gradeLevels" id="gradeLevels" required>
                         <option value="" disabled selected hidden>Select your grade level!</option>
@@ -88,13 +74,11 @@
                         <option value="Debate Club">Invictus</option>
                     </select><br><br>
                 <label for="reasonForJoining">Why do you want to join this club?
-                    <textarea name="reasonForJoining" id="response">
+                    <textarea name="reasonForJoining" id="response" onfocus="changeColor(this)" required onblur="blurMark(this)">
                     </textarea></label>
             </fieldset><br>
-            <fieldset id="actionButtons">
                 <input type="submit" value="Submit Form">
                 <input type="reset" value="Clear Data">
-            </fieldset>    
         </form>
     </body>
 </html>
