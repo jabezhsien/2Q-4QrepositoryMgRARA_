@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Q3 2nd Graded Exercise">
+    <meta name="keywords" content="HTML Forms">
+    <meta name="author" content="AL Mendoza">
+    <title>Sample Form</title>
+    <!-- updated external css link to show how to share it between repository -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="../../assets/pshslogo.png" sizes="32x32" type="image/png">
+   <style>
+    body{
+        padding: 25px;
+        font-family: arial;
+        width: 80%;
+        margin-left: 10%;
+    }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+    }
+    table, th, td {
+        border: 1px solid black;
+        padding: 5px;
+    }
+    tr:nth-child(odd) {
+      background: navy;
+      color: white;
+    }
+    select {
+        width: 250px;
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid  navy;
+        border-radius: 6px;
+        background-color: #f9f9f9;
+        color: #333;
+        appearance: none; /* Remove default arrow (Chrome, Safari, Edge) */
+        -moz-appearance: none; /* Firefox */
+        -webkit-appearance: none; /* Safari */
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+    }
+
+    /* Style the dropdown options */
+    select option {
+        padding: 10px;
+        background-color: white;
+        color: black;
+    }
+
+    /* Hover effect for options (works in some browsers) */
+    select option:hover {
+        background-color: #e0f7e9;
+    }
+
+    /* Optional: focus style */
+    select:focus {
+        outline: none;
+        border-color: #2e7d32;
+        box-shadow: 0 0 5px rgba(46, 125, 50, 0.5);
+    }
+    </style>
+  </head>
+  <body>
+     <header>
+        <div>
+            <h1>
+                Show List of Students Who Signed-Up    
+            </h1>
+            <h3>by AL Mendoza </h3>
+        </div>
+        <nav class="navbar">
+           <button type="button" id="signup"> Back to Sign-Ups </button>
+           <button type="button" id="home"> Back to Home </button>
+        </nav>
+        <br/>
+    </header>
+    <section>
+          <label> Select Your Club
+            <select id="clubs" onchange="showClub(this.value)">
+              <option disabled selected value> -- select an option -- </option>
+              <option value="All"> All </option>
+              <option value="AKSIS"> AKSIS </option>
+              <option value="Bake Club"> Bake Club </option>
+              <option value="Computron"> Computron </option>
+              <option value="Himig Agham"> Himig Agham </option>
+              <option value="Kamalayan"> Kamalayan </option>
+              <option value="Sagala"> Sagala </option>
+            </select>
+          </label> 
+          <p> Total Signup : <span id="tSignUps"> </span></p>
+    </section>
+    <section>
+
+      <table id="results"> </table>
+      
+    </section>
+    <script>
+      const signupBtn = document.getElementById('signup');
+      const homeBtn = document.getElementById('home');
+      const results = document.getElementById('results');
+      const tSignUps = document.getElementById('tSignUps');
+      const clubsSelect = document.getElementById('clubs');
+
+      if (signupBtn) {
+        signupBtn.addEventListener('click', () => {
+          window.location.href = 'q3ge3Mendoza.html';
+        });
+      }
+
+      if (homeBtn) {
+        homeBtn.addEventListener('click', () => {
+          window.location.href = '../../index.html';
+        });
+      }
+
+      function showClub(theClub) {
+        let totalSignUp = 0;
+        const signupString = localStorage.getItem('clubsignups');
+        const signupsList = signupString ? JSON.parse(signupString) : {};
+        let rowString = '';
+
+        for (let key in signupsList) {
+          if (theClub === 'All' || signupsList[key].clubs === theClub) {
+            rowString += `<tr>` +
+              `<td>${signupsList[key].clubs}</td>` +
+              `<td>${key}</td>` +
+              `<td>${signupsList[key].fname}</td>` +
+              `<td>${signupsList[key].grade}</td>` +
+              `<td>${signupsList[key].semail}</td>` +
+              `<td>${signupsList[key].phone}</td>` +
+              `<td>${signupsList[key].inex}</td>` +
+              `</tr>`;
+            totalSignUp++;
+          }
+        }
+
+        if (rowString) {
+          rowString = '<tr><th>Club</th><th>ID</th><th>Fullname</th><th>Grade</th><th>Email</th><th>Mobile</th><th>Intern|Extern</th></tr>' + rowString;
+          results.innerHTML = rowString;
+          if (tSignUps) tSignUps.textContent = totalSignUp;
+        } else {
+          results.innerHTML = "<tr><td colspan='7'>No Sign Ups for the club</td></tr>";
+          if (tSignUps) tSignUps.textContent = '';
+        }
+      }
+
+      if (clubsSelect) {
+        clubsSelect.addEventListener('change', function () { showClub(this.value); });
+      }
+
+      // initial call
+      showClub('All');
+    </script>
+  </body>
+</html>
